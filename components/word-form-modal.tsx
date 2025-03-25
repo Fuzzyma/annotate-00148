@@ -205,7 +205,7 @@ export function WordFormModal({
                   name="term"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Term</FormLabel>
+                      <FormLabel>Term*</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="Enter the dialect term"
@@ -237,7 +237,7 @@ export function WordFormModal({
                 name="definition"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Definition</FormLabel>
+                    <FormLabel>Definition*</FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder="Provide a clear definition of the term"
@@ -255,7 +255,7 @@ export function WordFormModal({
                 name="region"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Regions</FormLabel>
+                    <FormLabel>Regions*</FormLabel>
                     <RegionSelector
                       allowNew
                       selectedRegions={field.value}
@@ -276,7 +276,7 @@ export function WordFormModal({
                 name="usageExamples"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Usage Examples</FormLabel>
+                    <FormLabel>Usage Examples*</FormLabel>
                     <div className="flex flex-col gap-2">
                       <div className="flex gap-2">
                         <Input

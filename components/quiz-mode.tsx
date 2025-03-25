@@ -232,12 +232,14 @@ export function QuizMode() {
               return (
                 <div
                   key={index}
-                  className={`flex items-center space-x-2 rounded-md border p-4 ${
+                  className={`flex items-center space-x-2 rounded-md border p-4 transition-colors duration-300 ${
                     isAnswerRevealed && option === currentWord.definition
                       ? "border-green-500 bg-green-50 dark:bg-green-950/20"
                       : isAnswerRevealed && option === selectedAnswer
                       ? "border-red-500 bg-red-50 dark:bg-red-950/20"
-                      : ""
+                      : isAnswerRevealed
+                      ? ""
+                      : "hover:bg-gray-100"
                   }`}
                   onClick={() => {
                     if (!isAnswerRevealed) {
