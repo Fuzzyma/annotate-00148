@@ -40,13 +40,6 @@ export function WordDetail() {
 
   const selectedWord = words.find((word) => word.id === selectedWordId);
 
-  // Focus the detail container when it mounts for better keyboard navigation
-  useEffect(() => {
-    if (detailRef.current) {
-      detailRef.current.focus();
-    }
-  }, [selectedWordId]);
-
   if (!selectedWord) {
     return (
       <div className="text-center py-10">

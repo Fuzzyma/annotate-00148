@@ -18,13 +18,6 @@ export function WordList() {
   const { filteredWords, setSelectedWordId } = useDictionary();
   const listRef = useRef<HTMLDivElement>(null);
 
-  // Focus the list container when it mounts for better keyboard navigation
-  useEffect(() => {
-    if (listRef.current) {
-      listRef.current.focus();
-    }
-  }, []);
-
   const handleWordClick = (word: Word) => {
     setSelectedWordId(word.id);
   };

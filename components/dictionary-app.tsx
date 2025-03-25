@@ -6,6 +6,7 @@ import { WordList } from "./word-list";
 import { WordDetail } from "./word-detail";
 import { QuizMode } from "./quiz-mode";
 import { WordFormModal } from "./word-form-modal";
+import { WordOfTheDay } from "./word-of-the-day";
 
 export function DictionaryApp() {
   const {
@@ -22,7 +23,16 @@ export function DictionaryApp() {
 
       <div className="mt-6">
         {activeView === "list" && (
-          <>{selectedWordId ? <WordDetail /> : <WordList />}</>
+          <>
+            {selectedWordId ? (
+              <WordDetail />
+            ) : (
+              <div className="space-y-8">
+                <WordOfTheDay />
+                <WordList />
+              </div>
+            )}
+          </>
         )}
         {activeView === "quiz" && <QuizMode />}
       </div>
