@@ -323,7 +323,7 @@ export function WordFormModal({
               />
             </div>
 
-            <DialogFooter>
+            <DialogFooter className="flex-wrap gap-1">
               <Button type="button" variant="outline" onClick={handleClose}>
                 Cancel
               </Button>

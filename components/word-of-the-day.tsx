@@ -150,10 +150,10 @@ export function WordOfTheDay() {
           </div>
         </div>
       </CardContent>
-      <CardFooter className="flex justify-between">
+      <CardFooter className="flex justify-between flex-wrap gap-1">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" className="grow sm:grow-0">
               <Share2 className="h-4 w-4 mr-2" />
               Share
             </Button>
@@ -182,7 +182,11 @@ export function WordOfTheDay() {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <Button variant="outline" onClick={handleViewDetails}>
+        <Button
+          variant="outline"
+          onClick={handleViewDetails}
+          className="grow sm:grow-0"
+        >
           View Details
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
