@@ -42,8 +42,12 @@ export function DictionaryHeader() {
             className="w-full sm:w-auto"
           >
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="list">Dictionary</TabsTrigger>
-              <TabsTrigger value="quiz">Quiz Mode</TabsTrigger>
+              <TabsTrigger value="list" className="hover:text-foreground">
+                Dictionary
+              </TabsTrigger>
+              <TabsTrigger value="quiz" className="hover:text-foreground">
+                Quiz Mode
+              </TabsTrigger>
             </TabsList>
           </Tabs>
 
