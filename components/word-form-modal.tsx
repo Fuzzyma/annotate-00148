@@ -41,6 +41,7 @@ import {
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
+import { RegionSelector } from "./region-selector";
 
 type WordFormModalProps = {
   open: boolean;
@@ -255,100 +256,16 @@ export function WordFormModal({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Regions</FormLabel>
-                    <div className="flex flex-col gap-2">
-                      <div className="flex flex-wrap gap-2">
-                        {field.value.map((region) => (
-                          <Badge
-                            key={region}
-                            variant="secondary"
-                            className="flex items-center gap-1"
-                          >
-                            {region}
-                            <button
-                              type="button"
-                              onClick={() => removeRegion(region)}
-                              className="ml-1 rounded-full hover:bg-muted p-0.5"
-                            >
-                              <X className="h-3 w-3" />
-                              <span className="sr-only">Remove {region}</span>
-                            </button>
-                          </Badge>
-                        ))}
-                      </div>
-
-                      <div className="flex gap-2">
-                        <Popover
-                          open={regionsPopoverOpen}
-                          onOpenChange={setRegionsPopoverOpen}
-                        >
-                          <PopoverTrigger asChild>
-                            <Button
-                              variant="outline"
-                              type="button"
-                              className="w-full justify-between"
-                            >
-                              <span>Select regions</span>
-                              <span className="sr-only">Open regions</span>
-                            </Button>
-                          </PopoverTrigger>
-                          <PopoverContent
-                            className="p-0 w-[300px]"
-                            align="start"
-                          >
-                            <Command>
-                              <CommandInput placeholder="Search regions..." />
-                              <CommandList>
-                                <CommandEmpty>No regions found.</CommandEmpty>
-                                <CommandGroup>
-                                  {allRegions.map((region) => (
-                                    <CommandItem
-                                      key={region}
-                                      onSelect={() =>
-                                        handleSelectRegion(region)
-                                      }
-                                      className="flex items-center gap-2"
-                                    >
-                                      <div
-                                        className={cn(
-                                          "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
-                                          field.value.includes(region)
-                                            ? "bg-primary text-primary-foreground"
-                                            : "opacity-50 [&_svg]:invisible"
-                                        )}
-                                      >
-                                        <Check className="h-3 w-3" />
-                                      </div>
-                                      <span>{region}</span>
-                                    </CommandItem>
-                                  ))}
-                                </CommandGroup>
-                              </CommandList>
-                            </Command>
-                          </PopoverContent>
-                        </Popover>
-                      </div>
-
-                      <div className="flex gap-2">
-                        <Input
-                          value={newRegion}
-                          onChange={(e) => setNewRegion(e.target.value)}
-                          placeholder="Add a new region"
-                          onKeyDown={(e) => {
-                            if (e.key === "Enter") {
-                              e.preventDefault();
-                              addRegion();
-                            }
-                          }}
-                        />
-                        <Button
-                          type="button"
-                          onClick={addRegion}
-                          variant="secondary"
-                        >
-                          <Plus className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    </div>
+                    <RegionSelector
+                      allowNew
+                      selectedRegions={field.value}
+                      availableRegions={allRegions}
+                      onRegionsChange={(regions) =>
+                        form.setValue("region", regions, {
+                          shouldValidate: true,
+                        })
+                      }
+                    />
                     <FormMessage />
                   </FormItem>
                 )}
